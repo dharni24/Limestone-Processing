@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mining project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <center><b><h2>LIMESTONE PROCESSING</h2></b></center>
+  <form onsubmit="processing();return false">
+    <div class="form-group">
+      <label for="CaO">CaO: <span id="CaO_result"></span></label>
+      <input type="number" class="form-control" id="CaO" placeholder="Enter the value" name="CaO" min="0" max="100" step="0.01" required>
+    </div>
+    <div class="form-group">
+      <label for="SiO2">SiO<sub>2</sub>: <span id="SiO2_result"></span></label>
+      <input type="number" class="form-control" id="SiO2" placeholder="Enter the value" name="SiO2" min="0" max="100" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="Al2O3">Al<sub>2</sub>O<sub>3</sub>: <span id="Al2O3_result"></span></label>
+        <input type="number" class="form-control" id="Al2O3" placeholder="Enter the value" name="Al2O3" min="0" max="100" step="0.01" required>
+    </div> 
+    <div class="form-group">
+        <label for="Fe2O3">Fe<sub>2</sub>O<sub>3</sub>: <span id="Fe2O3_result"></span></label>
+        <input type="number" class="form-control" id="Fe2O3" placeholder="Enter the value" name="Fe2O3" min="0" max="100" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="MgO">MgO: <span id="MgO_result"></span></label>
+        <input type="number" class="form-control" id="MgO" placeholder="Enter the value" name="MgO" min="0" max="100" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="SO3">SO<sub>3</sub>: <span id="SO3_result"></span></label>
+        <input type="number" class="form-control" id="SO3" placeholder="Enter the value" name="SO3" min="0" max="100" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="K2O">K<sub>2</sub>O: <span id="K2O_result"></span></label>
+        <input type="number" class="form-control" id="K2O" placeholder="Enter the value" name="K2O" min="0" max="100" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="Na2O">Na<sub>2</sub>O: <span id="Na2O_result"></span></label>
+        <input type="number" class="form-control" id="Na2O" placeholder="Enter the value" name="Na2O" min="0" max="100" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="LOI">LOI: <span id="LOI_result"></span></label>
+        <input type="number" class="form-control" id="LOI" placeholder="Enter the value" name="LOI" min="0" max="100" step="0.01" required>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="reset" class="btn btn-default">Reset</button>
+  </form>
+</div>
+<center><h3 id="result" name="result"></h3></center>
+<script>
+    function processing(){
+        var CaO_value = Number(document.getElementById("CaO").value);
+        var SiO2_value = Number(document.getElementById("SiO2").value);
+        var Al2O3_value = Number(document.getElementById("Al2O3").value);
+        var Fe2O3_value = Number(document.getElementById("Fe2O3").value);
+        var MgO_value = Number(document.getElementById("MgO").value);
+        var SO3_value = Number(document.getElementById("SO3").value);
+        var K2O_value = Number(document.getElementById("K2O").value);
+        var Na2O_value = Number(document.getElementById("Na2O").value);
+        var LOI_value = Number(document.getElementById("LOI").value);
+
+        if ( CaO_value < 41.2){
+            document.getElementById("result").innerHTML= "Cut off grade is <b>LOW</b>";
+            document.getElementById("CaO_result").innerHTML= "low";
+            document.getElementById("CaO_result").style.color = "blue";
+        }
+        else if ( CaO_value > 42.8){
+            document.getElementById("result").innerHTML= "Cut off grade is <b>HIGH</b>";
+            document.getElementById("CaO_result").innerHTML= "high";
+            document.getElementById("CaO_result").style.color = "red";
+        }
+        else{
+            document.getElementById("result").innerHTML= "Cut off grade is <b>ACCEPTABLE</b>";
+            document.getElementById("CaO_result").innerHTML= "optimal";
+            document.getElementById("CaO_result").style.color = "green";
+        }
+
+        if ( SiO2_value < 9.2){
+            document.getElementById("SiO2_result").innerHTML= "low";
+            document.getElementById("SiO2_result").style.color = "blue";
+        }
+        else if ( SiO2_value > 18.0){
+            document.getElementById("SiO2_result").innerHTML= "high";
+            document.getElementById("SiO2_result").style.color = "red";
+        }
+        else{
+            document.getElementById("SiO2_result").innerHTML= "optimal";
+            document.getElementById("SiO2_result").style.color = "green";
+        }
+
+        if ( Al2O3_value < 1.45){
+            document.getElementById("Al2O3_result").innerHTML= "low";
+            document.getElementById("Al2O3_result").style.color = "blue";
+        }
+        else if ( Al2O3_value > 3.5){
+            document.getElementById("Al2O3_result").innerHTML= "high";
+            document.getElementById("Al2O3_result").style.color = "red";
+        }
+        else{
+            document.getElementById("Al2O3_result").innerHTML= "optimal";
+            document.getElementById("Al2O3_result").style.color = "green";
+        }
+
+        if ( Fe2O3_value < 0.8){
+            document.getElementById("Fe2O3_result").innerHTML= "low";
+            document.getElementById("Fe2O3_result").style.color = "blue";
+        }
+        else if ( Fe2O3_value > 1){
+            document.getElementById("Fe2O3_result").innerHTML= "high";
+            document.getElementById("Fe2O3_result").style.color = "red";
+        }
+        else{
+            document.getElementById("Fe2O3_result").innerHTML= "optimal";
+            document.getElementById("Fe2O3_result").style.color = "green";
+        }
+        
+        if ( MgO_value < 0.2){
+            document.getElementById("MgO_result").innerHTML= "low";
+            document.getElementById("MgO_result").style.color = "blue";
+        }
+        else if ( MgO_value > 0.9){
+            document.getElementById("MgO_result").innerHTML= "high";
+            document.getElementById("MgO_result").style.color = "red";
+        }
+        else{
+            document.getElementById("MgO_result").innerHTML= "optimal";
+            document.getElementById("MgO_result").style.color = "green";
+        }
+
+        if ( SO3_value < 0){
+            document.getElementById("SO3_result").innerHTML= "low";
+            document.getElementById("SO3_result").style.color = "blue";
+        }
+        else if ( SO3_value > 0.2){
+            document.getElementById("SO3_result").innerHTML= "high";
+            document.getElementById("SO3_result").style.color = "red";
+        }
+        else{
+            document.getElementById("SO3_result").innerHTML= "optimal";
+            document.getElementById("SO3_result").style.color = "green";
+        }
+
+        if ( K2O_value < 0){
+            document.getElementById("K2O_result").innerHTML= "low";
+            document.getElementById("K2O_result").style.color = "blue";
+        }
+        else if ( K2O_value > 0.5){
+            document.getElementById("K2O_result").innerHTML= "high";
+            document.getElementById("K2O_result").style.color = "red";
+        }
+        else{
+            document.getElementById("K2O_result").innerHTML= "optimal";
+            document.getElementById("K2O_result").style.color = "green";
+        }
+
+        if ( Na2O_value < 0){
+            document.getElementById("Na2O_result").innerHTML= "low";
+            document.getElementById("Na2O_result").style.color = "blue";
+        }
+        else if ( Na2O_value > 0.2){
+            document.getElementById("Na2O_result").innerHTML= "high";
+            document.getElementById("Na2O_result").style.color = "red";
+        }
+        else{
+            document.getElementById("Na2O_result").innerHTML= "optimal";
+            document.getElementById("Na2O_result").style.color = "green";
+        }
+
+        if ( LOI_value < 31){
+            document.getElementById("LOI_result").innerHTML= "low";
+            document.getElementById("LOI_result").style.color = "blue";
+        }
+        else if ( LOI_value > 41){
+            document.getElementById("LOI_result").innerHTML= "high";
+            document.getElementById("LOI_result").style.color = "red";
+        }
+        else{
+            document.getElementById("LOI_result").innerHTML= "optimal";
+            document.getElementById("LOI_result").style.color = "green";
+        }
+
+    }
+</script>
+</body>
+</html>
